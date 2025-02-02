@@ -1,4 +1,32 @@
+export const Label = ({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) => {
+  return (
+    <div className="bg-neutral-700 p-4 rounded-lg">
+      <p className="text-gray-300 text-sm mb-2">{title}</p>
+      <h3 className="text-white font-medium">{description}</h3>
+    </div>
+  );
+};
 export const Hero = () => {
+  const labels = [
+    {
+      title: "LATEST UPDATE",
+      description: "Major Political Figure's Climate Claims Debunked",
+    },
+    {
+      title: "VIRAL CHECK",
+      description: "Social Media Post About Vaccines: Facts vs Fiction",
+    },
+    {
+      title: "BREAKING",
+      description: "Fact-checking Recent Viral Economic Claims",
+    },
+  ];
   return (
     <section id="hero" className="bg-neutral-900 min-h-[70vh] pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -35,24 +63,13 @@ export const Hero = () => {
                 <span className="text-white font-medium">TRENDING NOW</span>
               </div>
               <div className="space-y-4">
-                <div className="bg-neutral-700 p-4 rounded-lg">
-                  <p className="text-gray-300 text-sm mb-2">LATEST UPDATE</p>
-                  <h3 className="text-white font-medium">
-                    Major Political Figure's Climate Claims Debunked
-                  </h3>
-                </div>
-                <div className="bg-neutral-700 p-4 rounded-lg">
-                  <p className="text-gray-300 text-sm mb-2">VIRAL CHECK</p>
-                  <h3 className="text-white font-medium">
-                    Social Media Post About Vaccines: Facts vs Fiction
-                  </h3>
-                </div>
-                <div className="bg-neutral-700 p-4 rounded-lg">
-                  <p className="text-gray-300 text-sm mb-2">BREAKING</p>
-                  <h3 className="text-white font-medium">
-                    Fact-checking Recent Viral Economic Claims
-                  </h3>
-                </div>
+                {labels.map((label, index) => (
+                  <Label
+                    key={index}
+                    title={label.title}
+                    description={label.description}
+                  />
+                ))}
               </div>
             </div>
             <div className="absolute -z-10 w-full h-full top-4 right-4 bg-red-500 rounded-xl"></div>
